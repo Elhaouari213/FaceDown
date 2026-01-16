@@ -3,11 +3,14 @@
 </p>
 
 # FaceDown
-![Kotlin](https://img.shields.io/badge/Kotlin-2.0-purple) ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material3-blue) ![Room](https://img.shields.io/badge/Android-Room-green)
 
+
+> **Current Status: Closed Testing**  
+> FaceDown is currently in the **Google Play Closed Testing** phase.
+> 
+> I am actively looking for testers to help bring this app to production! If you would like to provide feedback, please [reach out to me](#contact).
 
 > **Note**: This repository is a technical showcase for a private productivity application called "FaceDown". It contains sanitized snippets of the core engineering challenges to demonstrate architectural and technical capabilities.
-
 
 FaceDown is a minimal timer that enforces focus by requiring the user to place their phone **face down** on a table. If the phone is picked up or flipped over, the timer pauses, ensuring a distraction-free environment.  
 
@@ -81,3 +84,6 @@ com.arekb.facedown
 </p>
 
 </details>
+
+### Contact
+[LinkedIn Profile](https://www.linkedin.com/in/arkadiusz-bauer/) | [Portfolio Website](https://arekbauer.com)
