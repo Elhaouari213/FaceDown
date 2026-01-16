@@ -39,7 +39,13 @@ Instead of using a heavy charting library for the simple weekly statistics, I bu
 
 *(See [WeeklyStatsChart.kt](snippets/WeeklyStatsChart.kt) for the drawing logic)*
 
-### 3. System Integration (Do Not Disturb)
+### 3. Reactive Foreground Service
+The core timer loop runs within a robust **Android Foreground Service** to guarantee execution even when the device is dozing.
+- **Flow Composition**: Instead of a basic `CountDownTimer`, I use Kotlin's `combine` operator to merge a 1-second heartbeat `Flow` with the real-time `SensorFlow`.
+- **State Machine**: This reactive stream powers the "Grace Period" logic, automatically triggering the 10-second recovery window when the `OrientationState` shifts to `FaceUp`.
+
+
+### 4. System Integration (Do Not Disturb)
 The app interacts directly with the Android System Services to mute notifications during deep focus. This requires handling runtime permissions (`ACCESS_NOTIFICATION_POLICY`) and managing the Interruption Filter state safely. 
 
 ## Architecture
@@ -50,12 +56,12 @@ com.arekb.facedown
 ├── data                 # Data Layer (Repositories, Sources)
 │   ├── database         # Room Entities & DAOs
 │   ├── sensor           # Accelerometer Implementation
-│   └── dnd              # System Service Wrappers
+│   └── timer            # System Service Wrappers
 ├── domain               # Domain Layer (Pure Kotlin)
 │   └── model            # Core Business Models (FocusSession, etc)
 ├── ui                   # UI Layer (Jetpack Compose)
 │   ├── home             # Timer & Canvas Charts
-│   └── stats            # Statistics & History
+│   ├── stats            # Statistics & History
 │   └── settings         # Statistics & History
 └── di                   # Hilt Dependency Injection Modules
 ```
